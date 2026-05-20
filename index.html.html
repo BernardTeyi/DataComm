@@ -1,0 +1,1139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Bernard Teyi — Data Communication Portfolio & Study Guide · Pentecost University, Ghana"/>
+<title>Bernard Teyi · DataComm Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@300;400;500&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --navy:#0a0f1e;--navy2:#111827;--slate:#1e2a3a;
+  --teal:#00d4b4;--teal2:#00b89c;--amber:#f59e0b;
+  --white:#f0f4f8;--muted:#94a3b8;
+  --border:rgba(0,212,180,0.18);
+  --glass:rgba(17,24,39,0.7);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'Barlow',sans-serif;font-weight:300;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0.9rem 2.5rem;background:rgba(10,15,30,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);transition:padding 0.3s}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--teal);text-decoration:none;cursor:pointer}
+.nav-logo span{color:var(--white)}
+.nav-links{display:flex;gap:0.1rem;list-style:none;align-items:center}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;padding:0.45rem 0.85rem;border-radius:3px;transition:color 0.2s,background 0.2s;cursor:pointer}
+.nav-links a:hover,.nav-links a.active{color:var(--teal);background:rgba(0,212,180,0.07)}
+.nav-right{display:flex;gap:0.6rem;align-items:center}
+.nav-cta{background:var(--teal);color:var(--navy);padding:0.5rem 1.2rem;border-radius:3px;font-family:'DM Mono',monospace;font-size:0.72rem;font-weight:500;text-decoration:none;letter-spacing:0.06em;transition:0.2s;cursor:pointer;border:none}
+.nav-cta:hover{background:var(--teal2)}
+.theme-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:0.45rem 0.65rem;border-radius:3px;cursor:pointer;font-size:0.85rem;transition:0.2s}
+.theme-btn:hover{border-color:var(--teal);color:var(--teal)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--white);display:block;transition:0.3s}
+.mobile-nav{display:none;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:var(--navy2);padding:1.5rem 2rem;gap:0;border-bottom:1px solid var(--border);z-index:998}
+.mobile-nav.open{display:flex}
+.mobile-nav a{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--muted);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;padding:0.75rem 0;border-bottom:1px solid rgba(0,212,180,0.08);cursor:pointer;transition:color 0.2s}
+.mobile-nav a:last-child{border:none}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--teal)}
+
+/* ══ PAGE SECTIONS ══ */
+.page-section{display:none;min-height:100vh;padding:82px 2.5rem 5rem;animation:fadeIn 0.4s ease}
+.page-section.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ══ TYPOGRAPHY HELPERS ══ */
+.sec-label{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:0.7rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.07;letter-spacing:-0.5px}
+.sec-title em{color:var(--teal);font-style:normal}
+.divider{width:52px;height:3px;background:var(--teal);margin:1.4rem 0 2rem}
+.lead{color:var(--muted);font-size:1rem;line-height:1.85;max-width:700px;margin-bottom:2.5rem}
+.h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;margin:3.5rem 0 1.2rem;letter-spacing:-0.3px}
+.h2 em{color:var(--teal);font-style:normal}
+.h3{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;margin:2rem 0 0.8rem}
+.body-text{color:var(--muted);line-height:1.85;font-size:0.95rem;max-width:800px;margin-bottom:1rem}
+.teal{color:var(--teal)}
+.highlight-box{background:rgba(0,212,180,0.05);border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:4px;padding:1.2rem 1.5rem;margin:1.5rem 0;max-width:800px}
+.highlight-box p{color:var(--muted);font-size:0.92rem;line-height:1.8;margin:0}
+.highlight-box strong{color:var(--white)}
+
+/* ══ BUTTONS ══ */
+.btn-primary{background:var(--teal);color:var(--navy);padding:0.85rem 2rem;font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:500;letter-spacing:0.06em;border-radius:3px;border:none;cursor:pointer;transition:0.2s;text-decoration:none;display:inline-block}
+.btn-primary:hover{background:var(--teal2);transform:translateY(-2px)}
+.btn-outline{border:1px solid var(--border);color:var(--white);padding:0.85rem 2rem;font-family:'DM Mono',monospace;font-size:0.82rem;letter-spacing:0.06em;border-radius:3px;background:none;cursor:pointer;transition:0.2s;text-decoration:none;display:inline-block}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:3rem}
+
+/* ══ TABLES ══ */
+.table-wrap{overflow-x:auto;margin:1.5rem 0;border-radius:6px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.85rem}
+thead{background:var(--slate)}
+thead th{font-family:'DM Mono',monospace;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal);padding:0.9rem 1.1rem;text-align:left}
+tbody tr{border-top:1px solid rgba(255,255,255,0.04);transition:background 0.15s}
+tbody tr:hover{background:rgba(0,212,180,0.04)}
+tbody td{padding:0.85rem 1.1rem;color:var(--muted);vertical-align:top;line-height:1.5}
+tbody td strong{color:var(--white)}
+
+/* ══ HOME HERO ══ */
+.hero-wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:4rem;align-items:center;min-height:calc(100vh - 82px);position:relative}
+.hero-grid-line{position:absolute;top:-82px;left:50%;width:1px;height:calc(100% + 82px);background:var(--border);pointer-events:none}
+.hero-dots{position:absolute;right:0;top:20%;display:grid;grid-template-columns:repeat(7,12px);gap:12px;opacity:0.1;pointer-events:none}
+.hero-dots span{width:3px;height:3px;border-radius:50%;background:var(--teal);display:block}
+.hero-badge{display:inline-block;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;border:1px solid rgba(0,212,180,0.4);padding:0.32rem 0.85rem;border-radius:20px;margin-bottom:1.4rem;animation:fadeUp 0.6s 0.1s both}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.8rem);font-weight:900;line-height:1.0;letter-spacing:-2.5px;animation:fadeUp 0.6s 0.2s both}
+.hero-title em{color:var(--teal);font-style:normal}
+.hero-sub{color:var(--muted);font-size:1.05rem;line-height:1.8;max-width:500px;margin-top:1.3rem;animation:fadeUp 0.6s 0.35s both}
+.hero-actions{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;animation:fadeUp 0.6s 0.5s both}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap;animation:fadeUp 0.6s 0.65s both}
+.stat-item{border-left:2px solid var(--teal);padding-left:1rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;display:block;line-height:1.1}
+.stat-label{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+.hero-right{display:flex;justify-content:center;align-items:center;animation:fadeIn 0.9s 0.3s both}
+.profile-frame{position:relative;width:300px;height:360px}
+.profile-frame::before{content:'';position:absolute;top:16px;left:16px;width:100%;height:100%;border:2px solid var(--teal);border-radius:6px;z-index:0}
+.profile-frame::after{content:'';position:absolute;bottom:-24px;left:-24px;width:80px;height:80px;border:2px solid rgba(0,212,180,0.25);border-radius:50%;z-index:0}
+.profile-img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:6px;display:block;filter:saturate(0.85)}
+.profile-badge{position:absolute;bottom:-14px;right:-14px;z-index:2;background:var(--teal);color:var(--navy);font-family:'DM Mono',monospace;font-size:0.68rem;font-weight:500;padding:0.45rem 0.85rem;border-radius:3px;letter-spacing:0.06em;white-space:nowrap}
+.quick-nav{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin-top:1.5rem}
+.qn-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;display:flex;align-items:center;gap:0.8rem;cursor:pointer;transition:0.2s}
+.qn-card:hover{border-color:var(--teal);transform:translateX(3px)}
+.qn-icon{font-size:1.3rem;flex-shrink:0}
+.qn-text .qn-title{font-family:'Playfair Display',serif;font-size:0.88rem;font-weight:700}
+.qn-text .qn-desc{font-size:0.75rem;color:var(--muted);margin-top:0.1rem}
+
+/* ══ ABOUT ══ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:4rem}
+.about-text p{color:var(--muted);line-height:1.9;font-size:0.97rem;margin-bottom:1.2rem}
+.about-text strong{color:var(--white)}
+.info-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.info-card{background:var(--slate);border:1px solid var(--border);border-radius:6px;padding:1.1rem 1.3rem;transition:border-color 0.2s}
+.info-card:hover{border-color:var(--teal)}
+.info-card .lbl{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.3rem}
+.info-card .val{font-size:0.88rem;color:var(--white);font-weight:500}
+.social-links{display:flex;gap:0.8rem;margin-top:2rem;flex-wrap:wrap}
+.social-btn{display:flex;align-items:center;gap:0.45rem;border:1px solid var(--border);color:var(--muted);padding:0.5rem 1rem;border-radius:3px;font-family:'DM Mono',monospace;font-size:0.72rem;text-decoration:none;transition:0.2s;letter-spacing:0.06em}
+.social-btn:hover{border-color:var(--teal);color:var(--teal)}
+.about-skills h3{font-family:'Playfair Display',serif;font-size:1.35rem;margin-bottom:1.3rem}
+.skill-cloud{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-tag{background:var(--slate);border:1px solid var(--border);color:var(--muted);font-family:'DM Mono',monospace;font-size:0.7rem;padding:0.38rem 0.85rem;border-radius:20px;letter-spacing:0.06em;transition:0.2s;cursor:default}
+.skill-tag:hover{background:rgba(0,212,180,0.1);border-color:var(--teal);color:var(--teal)}
+
+/* ══ STUDY AREAS / SERVICES ══ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem;margin-top:3rem}
+.service-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:2rem;position:relative;overflow:hidden;transition:0.3s}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.service-card:hover{border-color:var(--teal);transform:translateY(-4px)}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{font-size:2rem;margin-bottom:1.1rem}
+.service-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.6rem}
+.service-card p{color:var(--muted);font-size:0.87rem;line-height:1.7}
+.service-num{position:absolute;bottom:1rem;right:1.3rem;font-family:'DM Mono',monospace;font-size:3rem;font-weight:500;color:rgba(0,212,180,0.05);line-height:1}
+
+/* ══ PORTFOLIO ══ */
+.portfolio-tabs{display:flex;gap:0.4rem;margin-top:2.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.tab-btn{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.5rem 1.1rem;border-radius:3px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:0.2s}
+.tab-btn.active,.tab-btn:hover{background:var(--teal);color:var(--navy);border-color:var(--teal)}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.3rem}
+.p-card{background:var(--slate);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:0.3s;display:flex;flex-direction:column}
+.p-card:hover{transform:translateY(-4px);border-color:var(--teal)}
+.p-card-head{background:var(--navy);padding:1.6rem;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:1rem}
+.p-card-icon{font-size:2rem;flex-shrink:0}
+.p-card-type{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem}
+.p-card-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;line-height:1.25}
+.p-card-body{padding:1.3rem 1.6rem;flex:1}
+.p-card-body p{color:var(--muted);font-size:0.86rem;line-height:1.7;margin-bottom:0.9rem}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.35rem}
+.tag{font-family:'DM Mono',monospace;font-size:0.63rem;padding:0.2rem 0.55rem;border-radius:10px;background:rgba(0,212,180,0.08);color:var(--teal);border:1px solid rgba(0,212,180,0.2)}
+.p-card-foot{padding:0.9rem 1.6rem;border-top:1px solid var(--border);display:flex;gap:0.8rem}
+.card-link{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);text-decoration:none;letter-spacing:0.06em;display:flex;align-items:center;gap:0.3rem;transition:gap 0.2s}
+.card-link:hover{gap:0.6rem}
+.card-link.dim{color:var(--muted)}
+.card-link.dim:hover{color:var(--white)}
+
+/* ══ DOCUMENTS ══ */
+.doc-section{margin-top:3.5rem}
+.doc-section .ds-title{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:0.5rem}
+.doc-section .ds-sub{color:var(--muted);font-size:0.88rem;margin-bottom:1.3rem}
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.doc-card{background:var(--slate);border:1px solid var(--border);border-radius:6px;padding:1.1rem 1.3rem;display:flex;align-items:center;gap:1rem;transition:0.2s;text-decoration:none;color:inherit}
+.doc-card:hover{border-color:var(--teal);transform:translateX(3px)}
+.doc-icon{font-size:1.8rem;flex-shrink:0}
+.doc-info .doc-name{font-size:0.85rem;font-weight:500;color:var(--white)}
+.doc-info .doc-meta{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);margin-top:0.2rem}
+.doc-dl{font-size:1rem;color:var(--teal);flex-shrink:0;margin-left:auto}
+
+/* ══ VIDEOS ══ */
+.video-section{margin-top:3.5rem;background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:2.5rem}
+.video-section h3{font-family:'Playfair Display',serif;font-size:1.5rem;margin-bottom:0.5rem}
+.video-section p{color:var(--muted);font-size:0.88rem;margin-bottom:1.5rem}
+.video-add-row{display:flex;gap:0.7rem;max-width:540px;margin-bottom:1.5rem}
+.vid-input{flex:1;padding:0.65rem 1rem;background:var(--slate);border:1px solid var(--border);border-radius:4px;color:var(--white);font-family:'DM Mono',monospace;font-size:0.75rem;outline:none;transition:border-color 0.2s}
+.vid-input:focus{border-color:var(--teal)}
+.vid-add-btn{background:var(--teal);color:var(--navy);border:none;padding:0.65rem 1.2rem;font-family:'DM Mono',monospace;font-size:0.75rem;font-weight:500;border-radius:4px;cursor:pointer;white-space:nowrap;transition:background 0.2s}
+.vid-add-btn:hover{background:var(--teal2)}
+.videos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem}
+.video-item{border-radius:6px;overflow:hidden;aspect-ratio:16/9}
+.video-item iframe{width:100%;height:100%;border:none}
+.video-empty{background:var(--slate);border:1px solid var(--border);border-radius:6px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.8rem;min-height:180px;font-size:2rem;opacity:0.4}
+.video-empty p{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--muted);text-align:center;opacity:1}
+
+/* ══ CONCEPTS — Cards ══ */
+.mode-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin:1.8rem 0}
+.mode-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.6rem;transition:0.2s;border-top:2px solid transparent}
+.mode-card:hover{border-color:var(--teal);border-top-color:var(--teal)}
+.mode-card .mc-badge{font-family:'DM Mono',monospace;font-size:0.62rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.6rem}
+.mode-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.5rem}
+.mode-card p{color:var(--muted);font-size:0.84rem;line-height:1.65}
+.mode-card .mc-ex{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--teal);margin-top:0.9rem;padding-top:0.8rem;border-top:1px solid var(--border)}
+.signal-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.8rem 0}
+.sig-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.6rem}
+.sig-card.analog{border-top:3px solid var(--amber)}
+.sig-card.digital{border-top:3px solid var(--teal)}
+.sig-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.5rem}
+.sig-card p{color:var(--muted);font-size:0.84rem;line-height:1.65}
+.sig-card .sig-ex{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border)}
+
+/* ══ OSI ACCORDION ══ */
+.osi-stack{display:flex;flex-direction:column;gap:0.45rem;margin:1.8rem 0;max-width:820px}
+.osi-layer{border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:border-color 0.2s}
+.osi-layer.open{border-color:var(--teal)}
+.osi-hdr{display:flex;align-items:center;gap:1rem;padding:0.95rem 1.4rem;cursor:pointer;background:var(--navy2);user-select:none;transition:background 0.2s}
+.osi-hdr:hover{background:var(--slate)}
+.osi-num{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;min-width:4rem}
+.osi-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;flex:1}
+.osi-protocols{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;margin-right:1rem}
+.osi-arrow{font-size:0.75rem;color:var(--muted);transition:transform 0.3s;flex-shrink:0}
+.osi-layer.open .osi-arrow{transform:rotate(180deg)}
+.osi-body{display:none;padding:1.2rem 1.4rem 1.5rem;border-top:1px solid var(--border);background:var(--navy)}
+.osi-layer.open .osi-body{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.osi-detail{display:flex;flex-direction:column;gap:0.3rem}
+.osi-detail .od-label{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em}
+.osi-detail .od-val{color:var(--muted);font-size:0.87rem;line-height:1.6}
+.osi-detail .od-val strong{color:var(--white)}
+.l7 .osi-name{color:#c084fc}.l6 .osi-name{color:#818cf8}.l5 .osi-name{color:#06b6d4}
+.l4 .osi-name{color:#22c55e}.l3 .osi-name{color:var(--amber)}.l2 .osi-name{color:#f97316}.l1 .osi-name{color:#ef4444}
+.l7 .osi-num{color:#c084fc}.l6 .osi-num{color:#818cf8}.l5 .osi-num{color:#06b6d4}
+.l4 .osi-num{color:#22c55e}.l3 .osi-num{color:var(--amber)}.l2 .osi-num{color:#f97316}.l1 .osi-num{color:#ef4444}
+
+/* ══ TCP/IP & COMPARE ══ */
+.tcpip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:1rem;margin:1.8rem 0}
+.tcpip-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.4rem;border-top:3px solid var(--teal)}
+.tcpip-card:nth-child(2){border-top-color:#22c55e}
+.tcpip-card:nth-child(3){border-top-color:var(--amber)}
+.tcpip-card:nth-child(4){border-top-color:#ef4444}
+.tcpip-card .tc-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem}
+.tcpip-card h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem}
+.tcpip-card p{color:var(--muted);font-size:0.82rem;line-height:1.6}
+.tcpip-card .tc-protos{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--teal);margin-top:0.8rem;padding-top:0.8rem;border-top:1px solid var(--border)}
+.proto-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.8rem 0}
+.proto-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.6rem}
+.proto-card.tcp{border-top:3px solid var(--teal)}
+.proto-card.udp{border-top:3px solid #f97316}
+.proto-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1rem}
+.proto-row{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:0.85rem}
+.proto-row:last-child{border:none}
+.proto-row .pk{color:var(--muted);font-size:0.8rem}
+.proto-row .pv{color:var(--white);font-weight:500;font-size:0.85rem;text-align:right;max-width:60%}
+
+/* ══ TOPOLOGIES ══ */
+.topo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin:1.8rem 0}
+.topo-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.5rem;transition:0.2s}
+.topo-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.topo-card .tc-icon{font-size:2rem;margin-bottom:0.8rem}
+.topo-card h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem}
+.topo-card p{color:var(--muted);font-size:0.83rem;line-height:1.6}
+
+/* ══ QUIZ ══ */
+.quiz-wrap{max-width:740px}
+.quiz-progress{display:flex;gap:0.4rem;margin-bottom:2rem;flex-wrap:wrap}
+.q-dot{width:32px;height:6px;border-radius:3px;background:var(--slate);border:1px solid var(--border);transition:background 0.3s}
+.q-dot.done{background:var(--teal);border-color:var(--teal)}
+.q-dot.wrong{background:#ef4444;border-color:#ef4444}
+.quiz-q{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:1.2rem;transition:border-color 0.2s}
+.quiz-q.answered{border-color:rgba(0,212,180,0.25)}
+.q-num{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--teal);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.8rem}
+.q-text{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;line-height:1.35;margin-bottom:1.3rem}
+.q-opts{display:flex;flex-direction:column;gap:0.55rem}
+.q-opt{display:flex;align-items:center;gap:0.9rem;background:var(--slate);border:1px solid var(--border);border-radius:5px;padding:0.8rem 1.1rem;cursor:pointer;transition:0.2s;font-size:0.9rem;color:var(--muted);user-select:none}
+.q-opt:hover{border-color:var(--teal);color:var(--white)}
+.q-opt input{accent-color:var(--teal);width:14px;height:14px;flex-shrink:0;cursor:pointer}
+.q-opt.correct{border-color:#22c55e;background:rgba(34,197,94,0.08);color:var(--white)}
+.q-opt.wrong{border-color:#ef4444;background:rgba(239,68,68,0.08)}
+.q-opt.locked{pointer-events:none}
+.quiz-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-top:1rem}
+.quiz-score-text{font-family:'DM Mono',monospace;font-size:0.82rem;color:var(--muted)}
+.result-section{margin-top:2.5rem;display:none}
+.score-display{font-family:'Playfair Display',serif;font-size:4rem;font-weight:900;color:var(--teal);line-height:1}
+.result-card{background:var(--navy2);border:1px solid var(--border);border-radius:8px;padding:1.8rem;max-width:520px;margin-top:1.5rem}
+.result-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem}
+.result-card p{color:var(--muted);font-size:0.9rem;line-height:1.75}
+.review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:2.5rem}
+.review-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.4rem;cursor:pointer;transition:0.2s}
+.review-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+.review-card .rc-icon{font-size:1.5rem;margin-bottom:0.6rem}
+.review-card h4{font-family:'Playfair Display',serif;font-size:0.95rem;margin-bottom:0.3rem}
+.review-card p{color:var(--muted);font-size:0.78rem;line-height:1.5}
+
+/* ══ RESOURCES ══ */
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem;margin-top:2rem}
+.res-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.6rem;text-decoration:none;color:inherit;transition:0.2s;display:block}
+.res-card:hover{border-color:var(--teal);transform:translateY(-3px)}
+.res-card .ri{font-size:1.6rem;margin-bottom:0.9rem}
+.res-card h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem;color:var(--white)}
+.res-card p{color:var(--muted);font-size:0.82rem;line-height:1.65}
+.res-card .rl{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--teal);margin-top:0.8rem;display:block}
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.1rem;margin:1.8rem 0}
+.book-card{background:var(--slate);border:1px solid var(--border);border-radius:6px;padding:1.4rem;border-left:3px solid var(--teal)}
+.book-card:nth-child(2){border-left-color:var(--amber)}
+.book-card:nth-child(3){border-left-color:#818cf8}
+.book-card:nth-child(4){border-left-color:#22c55e}
+.book-card h3{font-family:'Playfair Display',serif;font-size:0.95rem;margin-bottom:0.35rem;color:var(--white)}
+.book-card p{font-size:0.82rem;color:var(--muted);line-height:1.55}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin:1.8rem 0}
+.tool-card{background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.3rem;text-decoration:none;color:inherit;transition:0.2s;display:block}
+.tool-card:hover{border-color:var(--teal)}
+.tool-card .ti{font-size:1.4rem;margin-bottom:0.6rem}
+.tool-card h3{font-family:'Playfair Display',serif;font-size:0.9rem;margin-bottom:0.3rem;color:var(--white)}
+.tool-card p{font-size:0.8rem;color:var(--muted);line-height:1.5}
+
+/* ══ CONTACT ══ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:5rem;margin-top:3.5rem}
+.contact-info h3{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1rem}
+.contact-info .ci-sub{color:var(--muted);line-height:1.8;margin-bottom:2rem;font-size:0.95rem}
+.contact-details{display:flex;flex-direction:column;gap:1rem}
+.contact-item{display:flex;align-items:center;gap:0.9rem}
+.ci-icon{width:38px;height:38px;border-radius:6px;background:rgba(0,212,180,0.08);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-item span{font-size:0.88rem;color:var(--muted)}
+.contact-item a{color:var(--white);text-decoration:none;transition:color 0.2s}
+.contact-item a:hover{color:var(--teal)}
+.cf{display:flex;flex-direction:column;gap:1.2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.fg{display:flex;flex-direction:column;gap:0.4rem}
+.fg label{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.fg input,.fg textarea,.fg select{background:var(--slate);border:1px solid var(--border);border-radius:4px;padding:0.8rem 1rem;color:var(--white);font-family:'Barlow',sans-serif;font-size:0.9rem;outline:none;transition:border-color 0.2s;width:100%}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--teal)}
+.fg select option{background:var(--slate)}
+.fg textarea{resize:vertical;min-height:120px}
+.form-success{display:none;background:rgba(0,212,180,0.08);border:1px solid var(--teal);border-radius:5px;padding:1rem 1.2rem;color:var(--teal);font-family:'DM Mono',monospace;font-size:0.8rem;margin-top:0.5rem}
+
+/* ══ FOOTER ══ */
+footer{background:var(--navy);border-top:1px solid var(--border);padding:3rem 2.5rem;text-align:center}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--teal);margin-bottom:0.5rem}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin:0.8rem 0;flex-wrap:wrap}
+.footer-links a{font-family:'DM Mono',monospace;font-size:0.7rem;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:var(--teal)}
+.footer-text{color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace}
+
+/* ══ BACK TO TOP ══ */
+.back-top{position:fixed;bottom:1.8rem;right:1.8rem;background:var(--teal);color:var(--navy);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;opacity:0;transition:opacity 0.3s,transform 0.2s;border:none;z-index:900;font-weight:700}
+.back-top.show{opacity:1}
+.back-top:hover{transform:translateY(-3px)}
+
+/* ══ SCROLL REVEAL ══ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.65s,transform 0.65s}
+.reveal.vis{opacity:1;transform:none}
+
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:960px){
+  .hero-wrap{grid-template-columns:1fr;text-align:center;padding-top:1rem}
+  .hero-right{margin-top:3rem;justify-content:center}
+  .hero-sub{margin:1.2rem auto 0}
+  .hero-actions{justify-content:center}
+  .hero-stats{justify-content:center}
+  .quick-nav{grid-template-columns:1fr 1fr}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .signal-pair,.proto-pair{grid-template-columns:1fr}
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+}
+@media(max-width:640px){
+  .page-section{padding:82px 1.3rem 4rem}
+  .profile-frame{width:240px;height:290px}
+  .quick-nav{grid-template-columns:1fr}
+  .info-cards{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <a class="nav-logo" onclick="show('home')">MY PORTFOLIO<span>.</span></a>
+  <ul class="nav-links">
+    <li><a id="nl-home" class="active" onclick="show('home')">Home</a></li>
+    <li><a id="nl-about" onclick="show('about')">About</a></li>
+    <li><a id="nl-study" onclick="show('study')">Study Areas</a></li>
+    <li><a id="nl-concepts" onclick="show('concepts')">Concepts</a></li>
+    <li><a id="nl-models" onclick="show('models')">Models</a></li>
+    <li><a id="nl-tech" onclick="show('tech')">Technologies</a></li>
+    <li><a id="nl-portfolio" onclick="show('portfolio')">Portfolio</a></li>
+    <li><a id="nl-quiz" onclick="show('quiz')">Quiz</a></li>
+    <li><a id="nl-resources" onclick="show('resources')">Resources</a></li>
+    <li><a id="nl-contact" onclick="show('contact')">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+    <button class="nav-cta" onclick="show('contact')">Get in Touch →</button>
+    <button class="hamburger" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a onclick="show('home');closeMobile()">Home</a>
+  <a onclick="show('about');closeMobile()">About</a>
+  <a onclick="show('study');closeMobile()">Study Areas</a>
+  <a onclick="show('concepts');closeMobile()">Concepts</a>
+  <a onclick="show('models');closeMobile()">Models</a>
+  <a onclick="show('tech');closeMobile()">Technologies</a>
+  <a onclick="show('portfolio');closeMobile()">Portfolio</a>
+  <a onclick="show('quiz');closeMobile()">Quiz</a>
+  <a onclick="show('resources');closeMobile()">Resources</a>
+  <a onclick="show('contact');closeMobile()">Contact</a>
+</div>
+
+<!-- ════════════ HOME ════════════ -->
+<div class="page-section active" id="sec-home">
+  <div class="hero-wrap">
+    <div class="hero-grid-line"></div>
+    <div class="hero-dots" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div>
+      <span class="hero-badge">✦ PBIT 206 · Pentecost University · 2025/2026</span>
+      <h1 class="hero-title">Data<br/><em>Communi-<br/>cation.</em></h1>
+      <p class="hero-sub">A complete semester portfolio &amp; interactive study guide by <strong>Bernard Teyi</strong> — exploring satellite systems, OSI models, signal theory, and the protocols powering modern global networks.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="show('concepts')">Start Learning →</button>
+        <button class="btn-outline" onclick="show('portfolio')">View Portfolio</button>
+        <button class="btn-outline" onclick="show('quiz')">Take the Quiz</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">OSI Layers</span></div>
+        <div class="stat-item"><span class="stat-num">5</span><span class="stat-label">Study Topics</span></div>
+        <div class="stat-item"><span class="stat-num">10</span><span class="stat-label">Quiz Questions</span></div>
+        <div class="stat-item"><span class="stat-num">PBIT</span><span class="stat-label">206 Course</span></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div>
+        <div class="profile-frame">
+          <img class="profile-img" src="images/5793901751663529599.jpg" alt="Bernard Teyi"/>
+          <div class="profile-badge">TEYI BERNARD</div>
+        </div>
+        <div class="quick-nav" style="margin-top:2.5rem">
+          <div class="qn-card" onclick="show('concepts')"><div class="qn-icon">📖</div><div class="qn-text"><div class="qn-title">Concepts</div><div class="qn-desc">Signals, modes, media</div></div></div>
+          <div class="qn-card" onclick="show('models')"><div class="qn-icon">🔗</div><div class="qn-text"><div class="qn-title">OSI & TCP/IP</div><div class="qn-desc">Network models</div></div></div>
+          <div class="qn-card" onclick="show('tech')"><div class="qn-icon">📡</div><div class="qn-text"><div class="qn-title">Technologies</div><div class="qn-desc">Wired & wireless</div></div></div>
+          <div class="qn-card" onclick="show('quiz')"><div class="qn-icon">🧠</div><div class="qn-text"><div class="qn-title">Quiz</div><div class="qn-desc">Test yourself</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h2" style="margin-top:5rem">What is <em>Data Communication?</em></div>
+  <p class="body-text"><strong>Data communication</strong> is the exchange of data between two or more devices through a transmission medium — cable or wireless. Every communicating device must follow the same rules, called a <strong>protocol</strong>, to ensure data is correctly sent, received, and understood.</p>
+  <div class="highlight-box"><p>The study of data communication covers <strong>physical signals</strong>, <strong>transmission media</strong>, <strong>network protocols</strong>, <strong>error detection</strong>, and the <strong>architectural models</strong> (OSI, TCP/IP) that organise these into manageable layers.</p></div>
+
+  <div class="h3">The 5 Components of Every Communication System</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:1.5rem">
+    <div class="mode-card"><div class="mc-badge">Component 1</div><h3>📤 Sender</h3><p>The device that originates the data — a laptop, phone, sensor, or server initiating communication.</p></div>
+    <div class="mode-card"><div class="mc-badge">Component 2</div><h3>📨 Message</h3><p>The information being transmitted — text, numbers, images, audio, video, or any digital data.</p></div>
+    <div class="mode-card"><div class="mc-badge">Component 3</div><h3>📡 Medium</h3><p>The physical or wireless path — copper wire, fibre optic cable, or electromagnetic radio waves.</p></div>
+    <div class="mode-card"><div class="mc-badge">Component 4</div><h3>📥 Receiver</h3><p>The destination device that interprets and reconstructs the incoming signal into usable data.</p></div>
+    <div class="mode-card"><div class="mc-badge">Component 5</div><h3>📋 Protocol</h3><p>Agreed rules governing format, timing, error-checking, and acknowledgement between devices.</p></div>
+  </div>
+
+  <div class="h3" style="margin-top:3rem">How Data Travels From A to B</div>
+  <div style="display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem;max-width:720px">
+    <div class="step-item" style="background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.4rem 1.6rem;display:flex;gap:1.5rem;align-items:flex-start">
+      <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--teal);opacity:0.5;line-height:1;min-width:2.5rem">1</span>
+      <div><h4 style="font-size:1rem;font-weight:600;margin-bottom:0.3rem">Encoding</h4><p style="color:var(--muted);font-size:0.88rem;line-height:1.65">The sender converts the message into a suitable signal — electrical pulses, light pulses, or radio waves depending on the medium.</p></div>
+    </div>
+    <div class="step-item" style="background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.4rem 1.6rem;display:flex;gap:1.5rem;align-items:flex-start">
+      <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--teal);opacity:0.5;line-height:1;min-width:2.5rem">2</span>
+      <div><h4 style="font-size:1rem;font-weight:600;margin-bottom:0.3rem">Transmission</h4><p style="color:var(--muted);font-size:0.88rem;line-height:1.65">The signal travels through the medium. Distance, interference, and noise can degrade it — error-detection mechanisms identify problems at this stage.</p></div>
+    </div>
+    <div class="step-item" style="background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.4rem 1.6rem;display:flex;gap:1.5rem;align-items:flex-start">
+      <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--teal);opacity:0.5;line-height:1;min-width:2.5rem">3</span>
+      <div><h4 style="font-size:1rem;font-weight:600;margin-bottom:0.3rem">Decoding &amp; Reception</h4><p style="color:var(--muted);font-size:0.88rem;line-height:1.65">The receiver converts the incoming signal back into data and verifies integrity using CRC, parity bits, or checksums before delivering it to the application.</p></div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('concepts')">Start with Concepts →</button><button class="btn-outline" onclick="show('about')">About Bernard</button></div>
+</div>
+
+<!-- ════════════ ABOUT ════════════ -->
+<div class="page-section" id="sec-about">
+  <div class="sec-label">// 01 — About</div>
+  <h1 class="sec-title">Who I <em>Am</em></h1>
+  <div class="divider"></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="body-text">I'm <strong>Bernard Teyi</strong>, a Data Communication student at <strong>Pentecost University, Ghana</strong>. This combined site serves as both my semester portfolio and an interactive study reference — documenting what I've studied, researched, and understood through my PBIT 206 coursework.</p>
+      <p class="body-text">My focus this semester has been on <strong>satellite communication systems</strong>, advanced data transmission principles, <strong>signal modulation</strong>, network models, and the engineering behind modern global connectivity — from orbital mechanics and HTS spot beams to the TCP/IP stack that runs the internet.</p>
+      <p class="body-text">Outside academics, I'm actively serving in student leadership — running for <strong>FESAC President</strong> at Pentecost University, committed to a stronger, more connected student community.</p>
+      <div class="info-cards">
+        <div class="info-card"><div class="lbl">Full Name</div><div class="val">Bernard Teyi</div></div>
+        <div class="info-card"><div class="lbl">Institution</div><div class="val">Pentecost University</div></div>
+        <div class="info-card"><div class="lbl">Programme</div><div class="val">Data Communication</div></div>
+        <div class="info-card"><div class="lbl">Course Code</div><div class="val">PBIT 206</div></div>
+        <div class="info-card"><div class="lbl">Academic Year</div><div class="val">2025 / 2026</div></div>
+        <div class="info-card"><div class="lbl">Location</div><div class="val">Ghana, West Africa</div></div>
+      </div>
+      <div class="social-links">
+        <a class="social-btn" href="mailto:teyibernard@gmail.com">✉ teyibernard@gmail.com</a>
+        <a class="social-btn" href="https://linkedin.com/in/Teyi-Bernard" target="_blank">in LinkedIn</a>
+        <a class="social-btn" href="https://github.com/BernardTeyi" target="_blank">🐙 GitHub</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="about-skills">
+        <h3>Topics &amp; Skills Covered</h3>
+        <div class="skill-cloud">
+          <span class="skill-tag">Satellite Communication</span><span class="skill-tag">Orbital Mechanics</span>
+          <span class="skill-tag">RF Link Budgets</span><span class="skill-tag">LEO / GEO / MEO</span>
+          <span class="skill-tag">HTS Spot Beams</span><span class="skill-tag">DVB-S2X</span>
+          <span class="skill-tag">Signal Modulation</span><span class="skill-tag">Frequency Spectrum</span>
+          <span class="skill-tag">Free-Space Path Loss</span><span class="skill-tag">Doppler Effect</span>
+          <span class="skill-tag">6G NTN</span><span class="skill-tag">OSI Model</span>
+          <span class="skill-tag">TCP/IP Stack</span><span class="skill-tag">Transmission Modes</span>
+          <span class="skill-tag">Analog &amp; Digital Signals</span><span class="skill-tag">Error Detection (CRC)</span>
+          <span class="skill-tag">Guided Media</span><span class="skill-tag">Wireless Media</span>
+          <span class="skill-tag">Network Topologies</span><span class="skill-tag">Protocol Reference</span>
+          <span class="skill-tag">APA 7th Edition</span><span class="skill-tag">Academic Research</span>
+        </div>
+      </div>
+      <div style="margin-top:2.5rem;background:var(--navy2);border:1px solid var(--border);border-radius:6px;padding:1.8rem">
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem">My Learning Journey</h3>
+        <div style="display:flex;flex-direction:column;gap:0.8rem">
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--teal);font-size:1.1rem;flex-shrink:0;margin-top:1px">▸</span>
+            <p style="color:var(--muted);font-size:0.87rem;line-height:1.65">Researched and wrote a comprehensive essay on <strong style="color:var(--white)">Advanced Satellite Communication &amp; HTS Technology</strong> covering LEO constellations, DVB-S2X, and African connectivity implications.</p>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--teal);font-size:1.1rem;flex-shrink:0;margin-top:1px">▸</span>
+            <p style="color:var(--muted);font-size:0.87rem;line-height:1.65">Studied the <strong style="color:var(--white)">OSI and TCP/IP models</strong> in depth — understanding how 7 layers organise all networked communication from physical bits to applications.</p>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--teal);font-size:1.1rem;flex-shrink:0;margin-top:1px">▸</span>
+            <p style="color:var(--muted);font-size:0.87rem;line-height:1.65">Explored <strong style="color:var(--white)">signal theory</strong> — analog vs digital, modulation, bandwidth, amplitude, frequency, and how error-detection (CRC, parity) protects data integrity.</p>
+          </div>
+          <div style="display:flex;gap:1rem;align-items:flex-start">
+            <span style="color:var(--teal);font-size:1.1rem;flex-shrink:0;margin-top:1px">▸</span>
+            <p style="color:var(--muted);font-size:0.87rem;line-height:1.65">Analysed <strong style="color:var(--white)">transmission media</strong> — from Cat6 copper at 10 Gbps to single-mode fibre at 100+ Gbps over 100 km, and the full wireless landscape from 802.11ax to 5G NR.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('study')">View Study Areas →</button><button class="btn-outline" onclick="show('home')">← Home</button></div>
+</div>
+
+<!-- ════════════ STUDY AREAS ════════════ -->
+<div class="page-section" id="sec-study">
+  <div class="sec-label">// 02 — Study Areas</div>
+  <h1 class="sec-title">Areas of <em>Study</em></h1>
+  <div class="divider"></div>
+  <p class="lead">Core competencies and knowledge areas developed through my Data Communication programme at Pentecost University. Each area corresponds directly to content I've studied, researched, and applied this semester.</p>
+  <div class="services-grid">
+    <div class="service-card reveal"><div class="service-icon">📡</div><h3>Satellite Communication</h3><p>Architecture of satellite systems — uplink/downlink design, transponder technology, GEO vs LEO vs MEO orbital choices, and the engineering trade-offs behind modern satellite broadband delivery.</p><div class="service-num">01</div></div>
+    <div class="service-card reveal"><div class="service-icon">🛰️</div><h3>HTS &amp; Spot Beam Technology</h3><p>High-Throughput Satellites using aggressive frequency reuse with precision spot beams. From KASAT and ViaSat-3 to next-generation fully-digital payload satellites delivering terabit-class capacity.</p><div class="service-num">02</div></div>
+    <div class="service-card reveal"><div class="service-icon">🌍</div><h3>Global Connectivity &amp; LEO</h3><p>Mega-constellation analysis: Starlink (6,000+ sats), OneWeb, and Project Kuiper — their implications for latency, capacity, and bridging Africa's digital divide. Includes 6G Non-Terrestrial Networks.</p><div class="service-num">03</div></div>
+    <div class="service-card reveal"><div class="service-icon">📶</div><h3>Signal Theory &amp; Modulation</h3><p>Signal modulation techniques, adaptive coding (DVB-S2X), EIRP, G/T figures of merit, carrier-to-noise ratios, free-space path loss calculation, and Doppler shift in LEO systems.</p><div class="service-num">04</div></div>
+    <div class="service-card reveal"><div class="service-icon">🔗</div><h3>Network Models (OSI &amp; TCP/IP)</h3><p>Deep study of OSI's 7-layer framework and how TCP/IP's 4-layer implementation powers the actual internet — from physical bits at Layer 1 to application protocols at Layer 7.</p><div class="service-num">05</div></div>
+    <div class="service-card reveal"><div class="service-icon">📝</div><h3>Technical Research &amp; Writing</h3><p>Academic research with rigorous APA 7th edition referencing — synthesising peer-reviewed sources, ITU/IEEE standards, and industry data into structured, evidence-based essays.</p><div class="service-num">06</div></div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('concepts')">Study Concepts →</button><button class="btn-outline" onclick="show('about')">← About</button></div>
+</div>
+
+<!-- ════════════ CONCEPTS ════════════ -->
+<div class="page-section" id="sec-concepts">
+  <div class="sec-label">// 03 — Core Concepts</div>
+  <h1 class="sec-title">Core <em>Concepts</em></h1>
+  <div class="divider"></div>
+  <p class="lead">The fundamental ideas that underpin all data communication systems — from signals and modes of transmission to the protocols that keep data intact and orderly.</p>
+
+  <div class="h2">Transmission <em>Modes</em></div>
+  <p class="body-text">The <strong>transmission mode</strong> defines the direction in which data flows between two communicating devices.</p>
+  <div class="mode-grid">
+    <div class="mode-card"><div class="mc-badge">Simplex</div><h3>One Direction Only</h3><p>Data flows in one direction only. The sender can only send; the receiver can only receive. No reverse channel exists.</p><div class="mc-ex">Examples: Keyboard → CPU, television broadcast, FM radio</div></div>
+    <div class="mode-card"><div class="mc-badge">Half-Duplex</div><h3>Both Directions, Not Simultaneously</h3><p>Data flows in both directions but not at the same time. One device must finish transmitting before the other can respond.</p><div class="mc-ex">Examples: Walkie-talkies, CB radio, older network hubs</div></div>
+    <div class="mode-card"><div class="mc-badge">Full-Duplex</div><h3>Both Directions Simultaneously</h3><p>Data flows in both directions at the same time. Both parties can send and receive concurrently — maximum efficiency.</p><div class="mc-ex">Examples: Telephone, video calls, modern Ethernet, Wi-Fi</div></div>
+  </div>
+
+  <div class="h2">Signal <em>Types</em></div>
+  <p class="body-text">Data is physically carried by either <strong>analog</strong> or <strong>digital</strong> signals, each with distinct characteristics and best-use scenarios.</p>
+  <div class="signal-pair">
+    <div class="sig-card analog"><h3>📊 Analog Signals</h3><p>Continuous, smooth waveforms that vary in amplitude and frequency. They can represent an infinite range of values. Susceptible to noise accumulation but can travel long distances without regeneration.</p><div class="sig-ex">Examples: Sound waves, AM/FM radio, original telephone systems, seismic signals.</div></div>
+    <div class="sig-card digital"><h3>💻 Digital Signals</h3><p>Discrete, on/off pulses representing binary values (0 and 1). Far more resistant to noise — repeaters can regenerate a clean signal. Easier to process, store, encrypt, and compress.</p><div class="sig-ex">Examples: Computer data, fibre optic light pulses, Ethernet, digital telephony (VoIP).</div></div>
+  </div>
+
+  <div class="h3">Key Signal Properties</div>
+  <div class="table-wrap"><table><thead><tr><th>Property</th><th>Definition</th><th>Unit</th><th>Significance</th></tr></thead><tbody>
+    <tr><td><strong>Amplitude</strong></td><td>Strength or height of the signal wave</td><td>Volts (V)</td><td>Determines signal power and range</td></tr>
+    <tr><td><strong>Frequency</strong></td><td>Number of wave cycles per second</td><td>Hertz (Hz)</td><td>Higher frequency = more data capacity</td></tr>
+    <tr><td><strong>Bandwidth</strong></td><td>Range of frequencies a channel can carry</td><td>Hz or bps</td><td>Directly determines maximum data rate</td></tr>
+    <tr><td><strong>Data Rate</strong></td><td>Speed at which bits are transmitted</td><td>bps, Mbps, Gbps</td><td>Measures throughput performance</td></tr>
+    <tr><td><strong>Latency</strong></td><td>Delay between sender transmitting and receiver getting data</td><td>Milliseconds (ms)</td><td>Critical for real-time applications</td></tr>
+    <tr><td><strong>Wavelength</strong></td><td>Physical distance between consecutive wave peaks</td><td>Metres (m)</td><td>Determines penetration and antenna size</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">Transmission <em>Media</em></div>
+  <p class="body-text">The medium is the physical or wireless path through which a signal travels from sender to receiver. Choosing the right medium involves trade-offs between speed, distance, cost, and interference.</p>
+  <div class="h3">Guided (Wired) Media</div>
+  <div class="table-wrap"><table><thead><tr><th>Medium</th><th>How it Works</th><th>Max Speed</th><th>Use Case</th></tr></thead><tbody>
+    <tr><td><strong>Twisted Pair (UTP/STP)</strong></td><td>Copper wire pairs twisted to cancel electromagnetic interference</td><td>Up to 10 Gbps</td><td>LAN (Cat5e, Cat6), telephone lines</td></tr>
+    <tr><td><strong>Coaxial Cable</strong></td><td>Central copper conductor with metallic shielding layer</td><td>Up to 1 Gbps</td><td>Cable TV, cable internet (DOCSIS)</td></tr>
+    <tr><td><strong>Fibre Optic (Multi-mode)</strong></td><td>Light pulses through larger glass core — multiple paths</td><td>Up to 10 Gbps</td><td>Building backbones, data centres</td></tr>
+    <tr><td><strong>Fibre Optic (Single-mode)</strong></td><td>Single light path through narrow core — minimal dispersion</td><td>100+ Gbps</td><td>Internet backbone, ISP links, 100+ km</td></tr>
+    <tr><td><strong>DSL</strong></td><td>High-frequency signals over telephone copper wires</td><td>Up to 100 Mbps</td><td>Home broadband over existing phone line</td></tr>
+  </tbody></table></div>
+  <div class="h3">Unguided (Wireless) Media</div>
+  <div class="table-wrap"><table><thead><tr><th>Medium</th><th>Frequency Range</th><th>Range</th><th>Use Case</th></tr></thead><tbody>
+    <tr><td><strong>Radio Waves</strong></td><td>3 Hz – 3 GHz</td><td>Very long (global)</td><td>AM/FM radio, Wi-Fi, Bluetooth, cellular</td></tr>
+    <tr><td><strong>Microwave</strong></td><td>1 – 300 GHz</td><td>Line of sight</td><td>Satellite communication, point-to-point links</td></tr>
+    <tr><td><strong>Infrared</strong></td><td>300 GHz – 400 THz</td><td>Very short (&lt;10 m)</td><td>TV remotes, short-range device communication</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">Protocols &amp; <em>Error Detection</em></div>
+  <p class="body-text">A <strong>protocol</strong> is a set of agreed rules governing how data is formatted, transmitted, received, and acknowledged. Without protocols, devices from different manufacturers could not communicate.</p>
+  <div class="mode-grid">
+    <div class="mode-card"><div class="mc-badge">Syntax</div><h3>Format &amp; Structure</h3><p>Defines the exact format of data — field order, length, and encoding. Both sender and receiver must agree on how data is laid out.</p></div>
+    <div class="mode-card"><div class="mc-badge">Semantics</div><h3>Meaning &amp; Action</h3><p>Defines what each section of data means and what action should be taken. For example, a specific bit pattern might signal "request connection."</p></div>
+    <div class="mode-card"><div class="mc-badge">Timing</div><h3>Speed &amp; Sequencing</h3><p>Controls when and how fast data is sent — handling cases where sender and receiver operate at different speeds through flow control mechanisms.</p></div>
+  </div>
+  <div class="h3">Error Detection Methods</div>
+  <div class="table-wrap"><table><thead><tr><th>Method</th><th>How it Works</th><th>Strength</th><th>Used In</th></tr></thead><tbody>
+    <tr><td><strong>Parity Bit</strong></td><td>Appends a single bit to make the count of 1s even or odd</td><td>Weak — detects single-bit errors only</td><td>Simple serial communication</td></tr>
+    <tr><td><strong>Checksum</strong></td><td>Sends the arithmetic sum of data segments; receiver recalculates and compares</td><td>Moderate — misses some multi-bit errors</td><td>TCP/IP, UDP headers</td></tr>
+    <tr><td><strong>CRC (Cyclic Redundancy Check)</strong></td><td>Divides data by a polynomial; the remainder is appended and re-checked</td><td>Very strong — detects burst errors reliably</td><td>Ethernet, Wi-Fi, storage</td></tr>
+    <tr><td><strong>Hamming Code</strong></td><td>Adds multiple parity bits at specific positions to locate and correct errors</td><td>Can correct single-bit errors, detect two-bit</td><td>Memory systems, satellite data</td></tr>
+  </tbody></table></div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('models')">Network Models →</button><button class="btn-outline" onclick="show('study')">← Study Areas</button></div>
+</div>
+
+<!-- ════════════ MODELS ════════════ -->
+<div class="page-section" id="sec-models">
+  <div class="sec-label">// 04 — Network Models</div>
+  <h1 class="sec-title">Network <em>Models</em></h1>
+  <div class="divider"></div>
+  <p class="lead">The OSI and TCP/IP models define how network communication is broken into distinct layers — each with a specific role, communicating only with adjacent layers.</p>
+
+  <div class="h2">The <em>OSI Model</em> — 7 Layers</div>
+  <p class="body-text">The <strong>Open Systems Interconnection (OSI)</strong> model — developed by ISO — is the definitive conceptual framework for understanding network communication. It separates concerns across 7 layers so that each can evolve independently. Click any layer to expand it.</p>
+  <div class="osi-stack">
+    <div class="osi-layer l7" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 7</span><span class="osi-name">Application</span><span class="osi-protocols">HTTP · HTTPS · FTP · SMTP · DNS</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">The interface between the network and end-user software. Provides services like file transfer, email, and web browsing directly to applications — the layer users interact with.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols</div><div class="od-val"><strong>HTTP, HTTPS, FTP, SMTP, DNS, POP3, IMAP, DHCP, SSH, Telnet</strong></div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">Your browser sends an HTTP GET request to a web server's IP address to load a page.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l6" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 6</span><span class="osi-name">Presentation</span><span class="osi-protocols">SSL/TLS · JPEG · MPEG</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Translates, encrypts, and compresses data so the application layer can understand it regardless of how the other system represents it internally.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols/Formats</div><div class="od-val"><strong>SSL/TLS</strong> (encryption), JPEG, PNG, MPEG, ASCII, Unicode, GIF</div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">SSL/TLS encrypts your password and payment data before it leaves your device.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l5" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 5</span><span class="osi-name">Session</span><span class="osi-protocols">NetBIOS · RPC · SIP</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Establishes, manages, and terminates communication sessions between two applications. Handles authentication, authorisation, and reconnection after interruption.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols</div><div class="od-val"><strong>NetBIOS, RPC, PPTP, SIP, NFS</strong></div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">A video call maintains a persistent session. If the connection drops briefly, the session layer attempts to restore it without restarting the call.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l4" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 4</span><span class="osi-name">Transport</span><span class="osi-protocols">TCP · UDP</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Provides end-to-end data delivery, error recovery, and flow control. Segments large messages into smaller units and reassembles them in correct order at the destination.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols</div><div class="od-val"><strong>TCP</strong> (reliable, connection-oriented, three-way handshake) · <strong>UDP</strong> (fast, connectionless, no acknowledgement)</div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">TCP ensures every packet of a file download arrives, in order. If a packet is lost, TCP requests a retransmission automatically.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l3" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 3</span><span class="osi-name">Network</span><span class="osi-protocols">IP · ICMP · OSPF · BGP</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Handles logical addressing (IP addresses) and routing — determining the optimal path for packets to travel across multiple different networks between source and destination.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols</div><div class="od-val"><strong>IPv4, IPv6, ICMP, OSPF, BGP, RIP, EIGRP</strong></div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">A router at Layer 3 examines the destination IP address of each packet and decides which path to forward it along using routing tables.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l2" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 2</span><span class="osi-name">Data Link</span><span class="osi-protocols">Ethernet · ARP · PPP</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Node-to-node data transfer between directly connected devices on the same network segment. Uses MAC addresses to identify devices. Handles framing and error detection for physical transmission.</div></div>
+        <div class="osi-detail"><div class="od-label">Protocols</div><div class="od-val"><strong>Ethernet (IEEE 802.3), Wi-Fi (IEEE 802.11), ARP, PPP, HDLC, 802.1Q (VLAN)</strong></div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">A network switch reads the destination MAC address of an incoming frame and forwards it only to the correct port — not broadcast to all devices.</div></div>
+      </div>
+    </div>
+    <div class="osi-layer l1" onclick="toggleOSI(this)">
+      <div class="osi-hdr"><span class="osi-num">Layer 1</span><span class="osi-name">Physical</span><span class="osi-protocols">Ethernet cable · Fibre · Radio</span><span class="osi-arrow">▼</span></div>
+      <div class="osi-body">
+        <div class="osi-detail"><div class="od-label">Role</div><div class="od-val">Transmits raw binary bits (0s and 1s) over a physical medium. Defines electrical signal voltages, cable specifications, pin layouts, connector types, and data rates.</div></div>
+        <div class="osi-detail"><div class="od-label">Examples</div><div class="od-val"><strong>Ethernet cables (Cat5e/6/6A), fibre optic, radio waves, hubs, repeaters, NICs, DSL modems</strong></div></div>
+        <div class="osi-detail"><div class="od-label">Example</div><div class="od-val">An Ethernet cable physically carries voltage pulses between a PC's NIC and a switch port at 1 Gbps.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h2">The <em>TCP/IP Model</em> — 4 Layers</div>
+  <p class="body-text">The <strong>TCP/IP model</strong> (Internet Model) is the practical implementation that actually runs the internet. It condenses OSI's 7 layers into 4, focusing on what is needed for real-world network communication.</p>
+  <div class="tcpip-grid">
+    <div class="tcpip-card"><div class="tc-num">Layer 4 — Top</div><h3>Application Layer</h3><p>Combines OSI Layers 5, 6, and 7. All high-level protocols used by applications — handles presentation and session management internally.</p><div class="tc-protos">HTTP · FTP · DNS · SMTP · DHCP · SSH · Telnet</div></div>
+    <div class="tcpip-card"><div class="tc-num">Layer 3</div><h3>Transport Layer</h3><p>Same as OSI Layer 4. Manages end-to-end delivery and data integrity between host applications.</p><div class="tc-protos">TCP (reliable) · UDP (fast)</div></div>
+    <div class="tcpip-card"><div class="tc-num">Layer 2</div><h3>Internet Layer</h3><p>Corresponds to OSI Layer 3. Handles logical IP addressing and routing packets across different networks worldwide.</p><div class="tc-protos">IP (v4/v6) · ICMP · ARP · OSPF</div></div>
+    <div class="tcpip-card"><div class="tc-num">Layer 1 — Bottom</div><h3>Network Access Layer</h3><p>Combines OSI Layers 1 and 2. Handles physical transmission and link-level framing for the local network.</p><div class="tc-protos">Ethernet · Wi-Fi · Fibre · DSL · PPP</div></div>
+  </div>
+
+  <div class="h2">OSI vs TCP/IP — <em>Comparison</em></div>
+  <div class="table-wrap"><table><thead><tr><th>Feature</th><th>OSI Model</th><th>TCP/IP Model</th></tr></thead><tbody>
+    <tr><td><strong>Layers</strong></td><td>7 layers</td><td>4 layers</td></tr>
+    <tr><td><strong>Developed by</strong></td><td>ISO (International Organization for Standardization)</td><td>U.S. Dept. of Defense (DARPA)</td></tr>
+    <tr><td><strong>Purpose</strong></td><td>Conceptual / theoretical reference model</td><td>Practical implementation model for the internet</td></tr>
+    <tr><td><strong>Protocol independence</strong></td><td>Generic — not tied to specific protocols</td><td>Built around TCP and IP specifically</td></tr>
+    <tr><td><strong>Presentation &amp; Session</strong></td><td>Separate dedicated layers (5 &amp; 6)</td><td>Merged into Application layer</td></tr>
+    <tr><td><strong>Physical &amp; Data Link</strong></td><td>Separate layers (1 &amp; 2)</td><td>Combined into Network Access layer</td></tr>
+    <tr><td><strong>Usage today</strong></td><td>Teaching, troubleshooting, and vendor-neutral reference</td><td>Actual standard for all internet communication</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">TCP vs <em>UDP</em></div>
+  <div class="proto-pair">
+    <div class="proto-card tcp">
+      <h3>🔗 TCP — Transmission Control Protocol</h3>
+      <div class="proto-row"><span class="pk">Connection type</span><span class="pv">Connection-oriented (3-way handshake)</span></div>
+      <div class="proto-row"><span class="pk">Reliability</span><span class="pv">Guaranteed delivery &amp; correct ordering</span></div>
+      <div class="proto-row"><span class="pk">Error checking</span><span class="pv">Yes — acknowledgements &amp; retransmission</span></div>
+      <div class="proto-row"><span class="pk">Flow control</span><span class="pv">Yes — windowing mechanism</span></div>
+      <div class="proto-row"><span class="pk">Speed</span><span class="pv">Slower (overhead of acknowledgements)</span></div>
+      <div class="proto-row"><span class="pk">Use cases</span><span class="pv">HTTP/S, email, file transfers, banking, SSH</span></div>
+    </div>
+    <div class="proto-card udp">
+      <h3>⚡ UDP — User Datagram Protocol</h3>
+      <div class="proto-row"><span class="pk">Connection type</span><span class="pv">Connectionless (no handshake)</span></div>
+      <div class="proto-row"><span class="pk">Reliability</span><span class="pv">No guaranteed delivery or ordering</span></div>
+      <div class="proto-row"><span class="pk">Error checking</span><span class="pv">Basic checksum only — no retransmission</span></div>
+      <div class="proto-row"><span class="pk">Flow control</span><span class="pv">None</span></div>
+      <div class="proto-row"><span class="pk">Speed</span><span class="pv">Faster (minimal overhead)</span></div>
+      <div class="proto-row"><span class="pk">Use cases</span><span class="pv">Video streaming, VoIP, gaming, DNS, DHCP</span></div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('tech')">Technologies →</button><button class="btn-outline" onclick="show('concepts')">← Concepts</button></div>
+</div>
+
+<!-- ════════════ TECHNOLOGIES ════════════ -->
+<div class="page-section" id="sec-tech">
+  <div class="sec-label">// 05 — Technologies</div>
+  <h1 class="sec-title">Communication <em>Technologies</em></h1>
+  <div class="divider"></div>
+  <p class="lead">A comprehensive reference of wired and wireless technologies, network types, topologies, and protocol standards used in modern data communication systems.</p>
+
+  <div class="h2">Wired <em>Technologies</em></div>
+  <div class="table-wrap"><table><thead><tr><th>Technology</th><th>Standard</th><th>Max Speed</th><th>Max Distance</th><th>Typical Use</th></tr></thead><tbody>
+    <tr><td><strong>Cat5e (UTP)</strong></td><td>IEEE 802.3u</td><td>1 Gbps</td><td>100 m</td><td>Home &amp; small office LAN</td></tr>
+    <tr><td><strong>Cat6 (UTP)</strong></td><td>IEEE 802.3ab</td><td>1–10 Gbps</td><td>55–100 m</td><td>Enterprise LAN, office networks</td></tr>
+    <tr><td><strong>Cat6A</strong></td><td>IEEE 802.3an</td><td>10 Gbps</td><td>100 m</td><td>High-speed enterprise LAN</td></tr>
+    <tr><td><strong>Coaxial (RG-6)</strong></td><td>DOCSIS 3.1</td><td>Up to 10 Gbps</td><td>500 m</td><td>Cable broadband &amp; TV distribution</td></tr>
+    <tr><td><strong>Fibre Optic (Multi-mode)</strong></td><td>IEEE 802.3z</td><td>Up to 10 Gbps</td><td>550 m</td><td>Building backbones, data centres</td></tr>
+    <tr><td><strong>Fibre Optic (Single-mode)</strong></td><td>IEEE 802.3ah</td><td>100+ Gbps</td><td>100+ km</td><td>Internet backbone, ISP inter-city links</td></tr>
+    <tr><td><strong>DSL (VDSL2)</strong></td><td>ITU G.993.2</td><td>Up to 100 Mbps</td><td>1 km</td><td>Home broadband over existing phone copper</td></tr>
+    <tr><td><strong>USB 3.2</strong></td><td>USB 3.2 Gen 2x2</td><td>20 Gbps</td><td>2 m</td><td>Direct device-to-device short range</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">Wireless <em>Technologies</em></div>
+  <div class="table-wrap"><table><thead><tr><th>Technology</th><th>Standard</th><th>Frequency</th><th>Max Speed</th><th>Range</th></tr></thead><tbody>
+    <tr><td><strong>Wi-Fi 4 (802.11n)</strong></td><td>IEEE 802.11n</td><td>2.4 / 5 GHz</td><td>600 Mbps</td><td>~70 m indoors</td></tr>
+    <tr><td><strong>Wi-Fi 5 (802.11ac)</strong></td><td>IEEE 802.11ac</td><td>5 GHz</td><td>3.5 Gbps</td><td>~35 m indoors</td></tr>
+    <tr><td><strong>Wi-Fi 6 (802.11ax)</strong></td><td>IEEE 802.11ax</td><td>2.4 / 5 / 6 GHz</td><td>9.6 Gbps</td><td>~35 m indoors</td></tr>
+    <tr><td><strong>Bluetooth 5.0</strong></td><td>IEEE 802.15.1</td><td>2.4 GHz</td><td>2 Mbps</td><td>Up to 240 m</td></tr>
+    <tr><td><strong>Zigbee</strong></td><td>IEEE 802.15.4</td><td>2.4 GHz</td><td>250 Kbps</td><td>10–100 m</td></tr>
+    <tr><td><strong>4G LTE</strong></td><td>3GPP Release 8+</td><td>700 MHz – 2.6 GHz</td><td>~150 Mbps</td><td>Several km</td></tr>
+    <tr><td><strong>5G NR</strong></td><td>3GPP Release 15+</td><td>Sub-6 GHz / mmWave</td><td>Up to 20 Gbps</td><td>100 m – few km</td></tr>
+    <tr><td><strong>Satellite (LEO)</strong></td><td>Starlink / OneWeb</td><td>Ku/Ka band</td><td>Up to 1 Gbps</td><td>Global coverage</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">Network <em>Types</em></div>
+  <div class="table-wrap"><table><thead><tr><th>Type</th><th>Full Name</th><th>Coverage Area</th><th>Typical Speed</th><th>Example</th></tr></thead><tbody>
+    <tr><td><strong>PAN</strong></td><td>Personal Area Network</td><td>~10 m</td><td>Up to 2 Mbps</td><td>Bluetooth headset connected to phone</td></tr>
+    <tr><td><strong>LAN</strong></td><td>Local Area Network</td><td>Building / campus</td><td>1–10 Gbps</td><td>University or office wired network</td></tr>
+    <tr><td><strong>WLAN</strong></td><td>Wireless LAN</td><td>Building / campus</td><td>Up to 9.6 Gbps</td><td>Wi-Fi network in a home or office</td></tr>
+    <tr><td><strong>MAN</strong></td><td>Metropolitan Area Network</td><td>City / region</td><td>Up to 10 Gbps</td><td>City-wide fibre broadband network</td></tr>
+    <tr><td><strong>WAN</strong></td><td>Wide Area Network</td><td>Countries / global</td><td>Varies widely</td><td>The internet; leased line between cities</td></tr>
+    <tr><td><strong>SAN</strong></td><td>Storage Area Network</td><td>Data centre</td><td>Up to 128 Gbps</td><td>Enterprise shared storage infrastructure</td></tr>
+  </tbody></table></div>
+
+  <div class="h2">Network <em>Topologies</em></div>
+  <div class="topo-grid">
+    <div class="topo-card"><div class="tc-icon">🚌</div><h3>Bus</h3><p>All devices share a single backbone cable. A break anywhere disrupts the whole network. Simple and cheap but largely obsolete for modern LANs.</p></div>
+    <div class="topo-card"><div class="tc-icon">⭐</div><h3>Star</h3><p>All devices connect to a central switch or hub. Most common LAN topology today — one device failing doesn't affect others. Easy to troubleshoot.</p></div>
+    <div class="topo-card"><div class="tc-icon">🔄</div><h3>Ring</h3><p>Devices form a closed loop. Data travels in one direction. A single failure can disrupt the whole network unless a dual-ring is used (FDDI).</p></div>
+    <div class="topo-card"><div class="tc-icon">🕸️</div><h3>Mesh</h3><p>Every device connects to every other device. Extremely fault-tolerant but expensive. Used in critical infrastructure, WANs, and the internet backbone.</p></div>
+    <div class="topo-card"><div class="tc-icon">🌳</div><h3>Tree (Hierarchical)</h3><p>A hierarchy of star-topology groups connected to a root. Scalable — used in large campus and corporate networks. Failure higher up affects more nodes.</p></div>
+    <div class="topo-card"><div class="tc-icon">🔀</div><h3>Hybrid</h3><p>Combines two or more topologies. Most real-world enterprise networks are hybrid — e.g. a star layout within each floor connecting via a ring backbone.</p></div>
+  </div>
+
+  <div class="h2">Common Protocols <em>Reference</em></div>
+  <div class="table-wrap"><table><thead><tr><th>Protocol</th><th>Full Name</th><th>Layer</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td><strong>HTTP/HTTPS</strong></td><td>HyperText Transfer Protocol (Secure)</td><td>Application</td><td>Web page requests and responses; HTTPS adds TLS encryption</td></tr>
+    <tr><td><strong>FTP</strong></td><td>File Transfer Protocol</td><td>Application</td><td>Transferring files between client and server</td></tr>
+    <tr><td><strong>SMTP</strong></td><td>Simple Mail Transfer Protocol</td><td>Application</td><td>Sending outbound email between mail servers</td></tr>
+    <tr><td><strong>DNS</strong></td><td>Domain Name System</td><td>Application</td><td>Translates human-readable domain names to IP addresses</td></tr>
+    <tr><td><strong>DHCP</strong></td><td>Dynamic Host Configuration Protocol</td><td>Application</td><td>Automatically assigns IP addresses, gateway, and DNS to devices</td></tr>
+    <tr><td><strong>SSH</strong></td><td>Secure Shell</td><td>Application</td><td>Encrypted remote terminal access and file transfer (replaces Telnet)</td></tr>
+    <tr><td><strong>TCP</strong></td><td>Transmission Control Protocol</td><td>Transport</td><td>Reliable, ordered, error-checked delivery of data streams</td></tr>
+    <tr><td><strong>UDP</strong></td><td>User Datagram Protocol</td><td>Transport</td><td>Fast, connectionless datagram delivery (low latency)</td></tr>
+    <tr><td><strong>IP</strong></td><td>Internet Protocol (v4/v6)</td><td>Network</td><td>Logical addressing and packet routing across networks</td></tr>
+    <tr><td><strong>ARP</strong></td><td>Address Resolution Protocol</td><td>Data Link / Internet</td><td>Maps a known IP address to a physical MAC address on LAN</td></tr>
+    <tr><td><strong>ICMP</strong></td><td>Internet Control Message Protocol</td><td>Network</td><td>Error reporting, diagnostics — used by ping and traceroute</td></tr>
+    <tr><td><strong>OSPF</strong></td><td>Open Shortest Path First</td><td>Network</td><td>Link-state routing protocol used inside enterprise networks</td></tr>
+    <tr><td><strong>BGP</strong></td><td>Border Gateway Protocol</td><td>Network</td><td>Inter-domain routing — the protocol that routes traffic across the internet</td></tr>
+  </tbody></table></div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('portfolio')">Portfolio →</button><button class="btn-outline" onclick="show('models')">← Models</button></div>
+</div>
+
+<!-- ════════════ PORTFOLIO ════════════ -->
+<div class="page-section" id="sec-portfolio">
+  <div class="sec-label">// 06 — Portfolio</div>
+  <h1 class="sec-title">What I've <em>Learnt &amp; Produced</em></h1>
+  <div class="divider"></div>
+  <p class="lead">Academic work, research, and coursework produced during the 2025/2026 semester. Documents are available for download and will expand as the semester progresses.</p>
+
+  <div class="portfolio-tabs">
+    <button class="tab-btn active" onclick="filterP('all',this)">All Work</button>
+    <button class="tab-btn" onclick="filterP('research',this)">Research</button>
+    <button class="tab-btn" onclick="filterP('coursework',this)">Coursework</button>
+    <button class="tab-btn" onclick="filterP('upcoming',this)">Upcoming</button>
+  </div>
+
+  <div class="portfolio-grid" id="pgrid">
+    <div class="p-card reveal" data-cat="research">
+      <div class="p-card-head"><div class="p-card-icon">📡</div><div><div class="p-card-type">Research Essay</div><div class="p-card-title">Advanced Data Communication: Satellite Systems &amp; HTS Technology</div></div></div>
+      <div class="p-card-body"><p>A comprehensive research essay on satellite communication principles, orbital mechanics, RF link budgets, LEO mega-constellations (Starlink, OneWeb), HTS spot beam frequency reuse, DVB-S2X modulation, and implications for Africa and developing economies including Ghana.</p><div class="tag-row"><span class="tag">PBIT 206</span><span class="tag">Satellite Comms</span><span class="tag">HTS</span><span class="tag">LEO Constellations</span><span class="tag">APA 7th</span></div></div>
+      <div class="p-card-foot"><a class="card-link" href="#" onclick="alert('Add your hosted document link here')">📄 View Essay →</a></div>
+    </div>
+    <div class="p-card reveal" data-cat="coursework">
+      <div class="p-card-head"><div class="p-card-icon">📋</div><div><div class="p-card-type">Coursework</div><div class="p-card-title">Add Your Next Assignment Here</div></div></div>
+      <div class="p-card-body"><p>Replace this placeholder with your next semester assignment, lab report, or project submission. Update the title, description, tags, and document link accordingly.</p><div class="tag-row"><span class="tag">Your Course</span><span class="tag">Your Topic</span></div></div>
+      <div class="p-card-foot"><a class="card-link dim" href="#">📌 Add Link →</a></div>
+    </div>
+    <div class="p-card reveal" data-cat="upcoming" style="border-style:dashed;opacity:0.55">
+      <div class="p-card-head"><div class="p-card-icon">➕</div><div><div class="p-card-type">Placeholder</div><div class="p-card-title">Reserved for Next Project</div></div></div>
+      <div class="p-card-body"><p>Slot ready for your next piece of coursework as the semester progresses.</p><div class="tag-row"><span class="tag">Coming Soon</span></div></div>
+      <div class="p-card-foot"><span class="card-link dim">📌 Reserved</span></div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTS -->
+  <div class="doc-section reveal" style="margin-top:4rem">
+    <div class="ds-title">📂 Documents &amp; Textbooks</div>
+    <div class="ds-sub">Core textbooks and academic documents. Click any card to download.</div>
+    <div class="doc-grid">
+      <a class="doc-card" href="Data_Communications_and_Networking_Behrouz.pdf" download>
+        <div class="doc-icon">📕</div>
+        <div class="doc-info"><div class="doc-name">Data Communications &amp; Networking</div><div class="doc-meta">PDF · Behrouz A. Forouzan · Core Textbook</div></div>
+        <div class="doc-dl">⬇</div>
+      </a>
+      <a class="doc-card" href="CCNA_Study_Guide_6th_Edition.pdf" download>
+        <div class="doc-icon">📗</div>
+        <div class="doc-info"><div class="doc-name">CCNA Study Guide — 6th Edition</div><div class="doc-meta">PDF · Todd Lammle · Cisco Certified Network Associate</div></div>
+        <div class="doc-dl">⬇</div>
+      </a>
+      <div class="doc-card" style="border-style:dashed;opacity:0.5;cursor:pointer" onclick="alert('Add more documents: duplicate a doc-card anchor tag above and update the href and text.')">
+        <div class="doc-icon">➕</div>
+        <div class="doc-info"><div class="doc-name">Add a Document</div><div class="doc-meta">Click to set up a new file link</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="video-section reveal">
+    <h3>🎬 Video Learning Resources</h3>
+    <p>Lecture recordings, tutorials, and presentations from my Data Communication course. Paste any YouTube link to add more.</p>
+    <div class="video-add-row">
+      <input type="text" class="vid-input" id="ytIn" placeholder="Paste a YouTube URL — e.g. https://youtu.be/..."/>
+      <button class="vid-add-btn" onclick="addVid()">+ Add Video</button>
+    </div>
+    <div class="videos-grid" id="vidGrid">
+      <div class="video-item"><iframe src="https://www.youtube.com/embed/McHw0tCrZe4" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+      <div class="video-item"><iframe src="https://www.youtube.com/embed/wrGzSAcJdaE" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('quiz')">Take the Quiz →</button><button class="btn-outline" onclick="show('tech')">← Technologies</button></div>
+</div>
+
+<!-- ════════════ QUIZ ════════════ -->
+<div class="page-section" id="sec-quiz">
+  <div class="sec-label">// 07 — Test Your Knowledge</div>
+  <h1 class="sec-title">Test Your <em>Knowledge</em></h1>
+  <div class="divider"></div>
+  <p class="lead">10 questions covering data communication concepts, network models, signal theory, and technologies. Select an answer for each question then submit for instant scoring and feedback.</p>
+  <div class="quiz-wrap">
+    <div class="quiz-progress" id="qprog"></div>
+    <div id="qContainer"></div>
+    <div class="quiz-actions">
+      <button class="btn-primary" onclick="submitQuiz()" id="submitBtn">Submit Answers</button>
+      <button class="btn-outline" onclick="resetQuiz()">↺ Retake Quiz</button>
+      <span class="quiz-score-text" id="scoreText"></span>
+    </div>
+    <div class="result-section" id="resultSec">
+      <div class="score-display" id="scoreDisplay"></div>
+      <div class="result-card" id="resultCard"></div>
+    </div>
+  </div>
+  <div style="margin-top:4rem">
+    <div class="h3">Need to Review?</div>
+    <div class="review-grid">
+      <div class="review-card" onclick="show('concepts')"><div class="rc-icon">📖</div><h4>Concepts</h4><p>Signals, modes, media, protocols, error detection</p></div>
+      <div class="review-card" onclick="show('models')"><div class="rc-icon">🔗</div><h4>Network Models</h4><p>OSI 7 layers, TCP/IP 4 layers, TCP vs UDP</p></div>
+      <div class="review-card" onclick="show('tech')"><div class="rc-icon">📡</div><h4>Technologies</h4><p>Wired &amp; wireless, network types, topologies</p></div>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('resources')">Resources →</button><button class="btn-outline" onclick="show('portfolio')">← Portfolio</button></div>
+</div>
+
+<!-- ════════════ RESOURCES ════════════ -->
+<div class="page-section" id="sec-resources">
+  <div class="sec-label">// 08 — Resources</div>
+  <h1 class="sec-title">Useful <em>Resources</em></h1>
+  <div class="divider"></div>
+  <p class="lead">Hand-picked courses, tools, standards, and textbooks to take your data communication knowledge further.</p>
+  <div class="h2">Courses &amp; <em>Tutorials</em></div>
+  <div class="res-grid">
+    <a class="res-card" href="https://www.netacad.com/" target="_blank"><div class="ri">🏫</div><h3>Cisco Networking Academy</h3><p>Free self-paced courses on networking fundamentals, CCNA, and cybersecurity. The gold standard for networking education worldwide.</p><span class="rl">netacad.com →</span></a>
+    <a class="res-card" href="https://www.coursera.org/learn/computer-networking" target="_blank"><div class="ri">🎓</div><h3>Coursera — Bits and Bytes of Networking</h3><p>Beginner-friendly Google course covering TCP/IP, DNS, DHCP, firewalls, and cloud networking. Free to audit.</p><span class="rl">coursera.org →</span></a>
+    <a class="res-card" href="https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:the-internet" target="_blank"><div class="ri">📐</div><h3>Khan Academy — How the Internet Works</h3><p>Short, accessible videos on packets, protocols, DNS, HTTP, and encryption. Perfect starting point for beginners.</p><span class="rl">khanacademy.org →</span></a>
+    <a class="res-card" href="https://www.udemy.com/course/complete-networking-fundamentals-course-ccna-start/" target="_blank"><div class="ri">🖥️</div><h3>Udemy — Complete Networking Fundamentals</h3><p>Comprehensive course covering OSI, TCP/IP, subnetting, routing, and switching. Excellent CCNA exam preparation.</p><span class="rl">udemy.com →</span></a>
+  </div>
+  <div class="h2">Standards &amp; <em>Documentation</em></div>
+  <div class="res-grid">
+    <a class="res-card" href="https://www.ietf.org/rfc/" target="_blank"><div class="ri">📋</div><h3>IETF — RFC Library</h3><p>Official archive of all internet standards. RFC 791 = IP, RFC 793 = TCP, RFC 2616 = HTTP. Free and publicly accessible.</p><span class="rl">ietf.org/rfc →</span></a>
+    <a class="res-card" href="https://standards.ieee.org/search/?q=802" target="_blank"><div class="ri">🔬</div><h3>IEEE 802 Standards</h3><p>IEEE defines the 802.x standards — Ethernet (802.3), Wi-Fi (802.11), Bluetooth (802.15). Authoritative LAN/MAN specifications.</p><span class="rl">standards.ieee.org →</span></a>
+    <a class="res-card" href="https://www.itu.int/en/ITU-T/Pages/default.aspx" target="_blank"><div class="ri">🌐</div><h3>ITU-T — Telecom Standardization</h3><p>UN agency for international telecom standards — DSL (G.993.2), optical networking, satellite, and multimedia protocols.</p><span class="rl">itu.int →</span></a>
+  </div>
+  <div class="h2">Network <em>Tools</em></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://www.wireshark.org/" target="_blank"><div class="ti">🔍</div><h3>Wireshark</h3><p>Free protocol analyser. Capture and inspect live network traffic to see protocols in real action.</p></a>
+    <a class="tool-card" href="https://www.netacad.com/courses/packet-tracer" target="_blank"><div class="ti">🗺️</div><h3>Cisco Packet Tracer</h3><p>Free simulation tool. Build virtual networks and configure routers and switches in a safe environment.</p></a>
+    <a class="tool-card" href="https://www.gns3.com/" target="_blank"><div class="ti">🖧</div><h3>GNS3</h3><p>Professional network emulator for running real Cisco IOS images in a virtual lab environment.</p></a>
+    <a class="tool-card" href="https://ping.eu/" target="_blank"><div class="ti">⚡</div><h3>Ping.eu</h3><p>Browser-based ping, traceroute, DNS lookup, and port scanning for quick network diagnostics.</p></a>
+  </div>
+  <div class="h2">Recommended <em>Textbooks</em></div>
+  <div class="book-grid">
+    <div class="book-card"><h3>Data Communications &amp; Networking — Forouzan</h3><p>Most widely used university textbook on data communications. Covers everything in this guide in depth with examples and exercises.</p></div>
+    <div class="book-card"><h3>Computer Networks — Tanenbaum &amp; Feamster</h3><p>Classic, in-depth technical treatment from physical layer to the application layer. Rigorous and comprehensive.</p></div>
+    <div class="book-card"><h3>Computer Networking: A Top-Down Approach — Kurose &amp; Ross</h3><p>Starts from the application layer and works down to physical. Excellent for understanding the internet from a software perspective.</p></div>
+    <div class="book-card"><h3>Network Warrior — Gary A. Donahue</h3><p>Practical, hands-on guide to real-world networking — routers, switches, firewalls, VLANs, and troubleshooting methodology.</p></div>
+  </div>
+  <div class="btn-row"><button class="btn-primary" onclick="show('contact')">Contact →</button><button class="btn-outline" onclick="show('quiz')">← Quiz</button></div>
+</div>
+
+<!-- ════════════ CONTACT ════════════ -->
+<div class="page-section" id="sec-contact">
+  <div class="sec-label">// 09 — Contact</div>
+  <h1 class="sec-title">Get in <em>Touch</em></h1>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h3>Let's Connect</h3>
+      <p class="ci-sub">Open to academic collaborations, discussions about data communication and networking, research partnerships, or any opportunities related to my field of study.</p>
+      <div class="contact-details">
+        <div class="contact-item"><div class="ci-icon">✉</div><span><a href="mailto:teyibernard@gmail.com">teyibernard@gmail.com</a></span></div>
+        <div class="contact-item"><div class="ci-icon">in</div><span><a href="https://linkedin.com/in/Teyi-Bernard" target="_blank">linkedin.com/in/Teyi-Bernard</a></span></div>
+        <div class="contact-item"><div class="ci-icon">🐙</div><span><a href="https://github.com/BernardTeyi" target="_blank">github.com/BernardTeyi</a></span></div>
+        <div class="contact-item"><div class="ci-icon">🎓</div><span>Pentecost University, Accra, Ghana</span></div>
+        <div class="contact-item"><div class="ci-icon">📅</div><span>Available for opportunities from 2026</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="cf" onsubmit="handleForm(event)">
+        <div class="form-row">
+          <div class="fg"><label>First Name *</label><input type="text" placeholder="e.g. Kwame" required/></div>
+          <div class="fg"><label>Last Name *</label><input type="text" placeholder="e.g. Mensah" required/></div>
+        </div>
+        <div class="fg"><label>Email Address *</label><input type="email" placeholder="you@example.com" required/></div>
+        <div class="fg"><label>Institution / Organisation</label><input type="text" placeholder="e.g. Pentecost University"/></div>
+        <div class="fg"><label>Enquiry Type</label>
+          <select><option value="">Select an option</option><option>Academic Collaboration</option><option>Research Partnership</option><option>Internship / Employment</option><option>General Enquiry</option></select>
+        </div>
+        <div class="fg"><label>Message *</label><textarea placeholder="Tell me about your question, project, or opportunity. What are you working on?" required></textarea></div>
+        <button type="submit" class="btn-primary">Send Message →</button>
+        <div class="form-success" id="fSuccess">✓ Message sent! I'll be in touch shortly.</div>
+      </form>
+    </div>
+  </div>
+  <div class="btn-row"><button class="btn-outline" onclick="show('resources')">← Resources</button><button class="btn-primary" onclick="show('home')">↩ Back to Home</button></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bernard Teyi.</div>
+  <div class="footer-links">
+    <a href="mailto:teyibernard@gmail.com">✉ teyibernard@gmail.com</a>
+    <a href="https://linkedin.com/in/Teyi-Bernard" target="_blank">in LinkedIn</a>
+    <a href="https://github.com/BernardTeyi" target="_blank">🐙 GitHub</a>
+  </div>
+  <p class="footer-text">© 2026 · Bernard Teyi · Pentecost University · PBIT 206 · Data Communication</p>
+</footer>
+
+<button class="back-top" id="bTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+<script>
+// ── NAVIGATION ──
+const sections=['home','about','study','concepts','models','tech','portfolio','quiz','resources','contact'];
+function show(id){
+  sections.forEach(s=>{
+    document.getElementById('sec-'+s).classList.toggle('active',s===id);
+    const el=document.getElementById('nl-'+s);
+    if(el)el.classList.toggle('active',s===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  initReveal();
+}
+function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('open')}
+function closeMobile(){document.getElementById('mobileNav').classList.remove('open')}
+
+// ── THEME ──
+let dark=true;
+function toggleTheme(){
+  dark=!dark;
+  const d=document.documentElement;
+  if(!dark){
+    d.style.setProperty('--navy','#f0f4f8');d.style.setProperty('--navy2','#e2e8f0');
+    d.style.setProperty('--slate','#cbd5e1');d.style.setProperty('--white','#0f172a');
+    d.style.setProperty('--muted','#475569');d.style.setProperty('--border','rgba(0,160,130,0.25)');
+    document.querySelector('.theme-btn').textContent='☀️';
+  }else{
+    d.style.setProperty('--navy','#0a0f1e');d.style.setProperty('--navy2','#111827');
+    d.style.setProperty('--slate','#1e2a3a');d.style.setProperty('--white','#f0f4f8');
+    d.style.setProperty('--muted','#94a3b8');d.style.setProperty('--border','rgba(0,212,180,0.18)');
+    document.querySelector('.theme-btn').textContent='🌙';
+  }
+}
+
+// ── BACK TO TOP ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('bTop').classList.toggle('show',window.scrollY>300);
+});
+
+// ── OSI ACCORDION ──
+function toggleOSI(layer){layer.classList.toggle('open')}
+
+// ── PORTFOLIO FILTER ──
+function filterP(cat,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#pgrid .p-card').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'flex':'none';
+  });
+}
+
+// ── VIDEO ──
+function addVid(){
+  const url=document.getElementById('ytIn').value.trim();
+  if(!url)return;
+  const m=url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|v\/))([A-Za-z0-9_-]{11})/);
+  if(!m){alert('Please enter a valid YouTube URL');return;}
+  const g=document.getElementById('vidGrid');
+  const d=document.createElement('div');
+  d.className='video-item';
+  d.innerHTML=`<iframe src="https://www.youtube.com/embed/${m[1]}" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>`;
+  g.appendChild(d);
+  document.getElementById('ytIn').value='';
+}
+
+// ── CONTACT FORM ──
+function handleForm(e){
+  e.preventDefault();
+  const s=document.getElementById('fSuccess');
+  s.style.display='block';
+  e.target.reset();
+  setTimeout(()=>s.style.display='none',5000);
+}
+
+// ── QUIZ ──
+const qs=[
+  {q:"What is the primary purpose of a protocol in data communication?",opts:["To physically amplify signals over long distances","To define agreed rules for formatting, transmitting, and acknowledging data","To assign IP addresses to devices on a network","To convert analog signals to digital"],ans:1},
+  {q:"Which transmission mode allows data to flow in both directions simultaneously?",opts:["Simplex","Half-Duplex","Full-Duplex","Multiplex"],ans:2},
+  {q:"How many layers does the OSI model have?",opts:["4","5","6","7"],ans:3},
+  {q:"Which OSI layer handles logical IP addressing and routing between networks?",opts:["Transport (Layer 4)","Data Link (Layer 2)","Network (Layer 3)","Session (Layer 5)"],ans:2},
+  {q:"Which protocol provides reliable, ordered, connection-oriented data delivery?",opts:["UDP","ICMP","ARP","TCP"],ans:3},
+  {q:"Which transmission medium offers the highest bandwidth over the longest distances?",opts:["Twisted Pair (Cat6)","Coaxial Cable","Single-mode Fibre Optic","Radio Waves"],ans:2},
+  {q:"The TCP/IP model combines OSI layers 5, 6, and 7 into which single layer?",opts:["Transport Layer","Internet Layer","Application Layer","Network Access Layer"],ans:2},
+  {q:"Which error detection method is strongest and reliably detects burst errors?",opts:["Parity Bit","Checksum","CRC (Cyclic Redundancy Check)","Hamming Code"],ans:2},
+  {q:"Which network topology connects every device to a central switch or hub?",opts:["Ring","Mesh","Bus","Star"],ans:3},
+  {q:"What does UDP sacrifice compared to TCP to achieve higher transmission speed?",opts:["IP addressing","Reliability and guaranteed delivery","Encryption","Data compression"],ans:1}
+];
+
+function buildQuiz(){
+  const prg=document.getElementById('qprog');
+  prg.innerHTML='';
+  qs.forEach((_,i)=>{const d=document.createElement('div');d.className='q-dot';d.id='dot'+i;prg.appendChild(d);});
+  const c=document.getElementById('qContainer');
+  c.innerHTML='';
+  qs.forEach((q,i)=>{
+    const div=document.createElement('div');
+    div.className='quiz-q';div.id='qq'+i;
+    div.innerHTML=`<div class="q-num">Question ${i+1} of ${qs.length}</div><div class="q-text">${q.q}</div><div class="q-opts">${
+      q.opts.map((o,oi)=>`<label class="q-opt" id="opt${i}_${oi}"><input type="radio" name="q${i}" value="${oi}" onchange="markDot(${i})"/> ${o}</label>`).join('')
+    }</div>`;
+    c.appendChild(div);
+  });
+}
+function markDot(i){
+  document.getElementById('dot'+i).classList.add('done');
+  document.getElementById('qq'+i).classList.add('answered');
+}
+function submitQuiz(){
+  let score=0;
+  qs.forEach((q,i)=>{
+    const sel=document.querySelector(`input[name="q${i}"]:checked`);
+    document.querySelectorAll(`#qq${i} .q-opt`).forEach(o=>o.classList.add('locked'));
+    document.getElementById(`opt${i}_${q.ans}`).classList.add('correct');
+    if(sel){
+      const v=parseInt(sel.value);
+      if(v===q.ans)score++;
+      else{document.getElementById(`opt${i}_${v}`).classList.add('wrong');document.getElementById('dot'+i).classList.replace('done','wrong');}
+    }
+  });
+  document.getElementById('scoreText').textContent=`Score: ${score} / ${qs.length}`;
+  const rs=document.getElementById('resultSec');rs.style.display='block';
+  document.getElementById('scoreDisplay').textContent=`${score}/${qs.length}`;
+  const pct=Math.round((score/qs.length)*100);
+  let msg='';
+  if(pct===100)msg='🏆 Perfect! You have mastered the core concepts of data communication.';
+  else if(pct>=80)msg='✅ Excellent work! Solid command of the material. Review any errors above.';
+  else if(pct>=60)msg='📖 Good effort! Revisit the sections where you made mistakes and retake.';
+  else msg='💪 Keep going — work through Concepts, Models, and Technologies then retake.';
+  document.getElementById('resultCard').innerHTML=`<h3>${pct}% — ${score<6?'Keep Studying':score<9?'Well Done':'Outstanding'}</h3><p>${msg}</p>`;
+  document.getElementById('submitBtn').disabled=true;
+}
+function resetQuiz(){
+  document.getElementById('scoreText').textContent='';
+  document.getElementById('resultSec').style.display='none';
+  document.getElementById('submitBtn').disabled=false;
+  buildQuiz();
+}
+buildQuiz();
+
+// ── SCROLL REVEAL ──
+function initReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('.reveal:not(.vis)').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.service-card').forEach((c,i)=>{c.style.transitionDelay=(i*0.07)+'s';obs.observe(c);});
+}
+initReveal();
+</script>
+</body>
+</html>
